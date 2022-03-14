@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodsora/generated/l10n.dart';
 
 /// Displays detailed information about a SampleItem.
 class SampleItemDetailsView extends StatelessWidget {
@@ -12,8 +13,8 @@ class SampleItemDetailsView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Item Details'),
       ),
-      body: const Center(
-        child: Text('More Information Here'),
+      body: Center(
+        child: Text(S.of(context).test_language),
       ),
     );
   }

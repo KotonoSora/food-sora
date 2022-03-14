@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodsora/generated/l10n.dart';
 
 /// A service that stores and retrieves user settings.
 ///
@@ -13,5 +14,11 @@ class SettingsService {
   Future<void> updateThemeMode(ThemeMode theme) async {
     // Use the shared_preferences package to persist settings locally or the
     // http package to persist settings over the network.
+  }
+
+  Future<Locale> locale() async => const Locale('en', 'US');
+
+  Future<void> updateLocale(Locale locale) async {
+    await S.load(locale);
   }
 }
