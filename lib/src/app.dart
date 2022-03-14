@@ -36,11 +36,14 @@ class MyApp extends StatelessWidget {
           // allows descendant Widgets to display the correct translations
           // depending on the user's locale.
           localizationsDelegates: const [
+            S.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
-            S.delegate,
+            GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
+          localeResolutionCallback: (_, __) => settingsController.locale,
+          locale: settingsController.locale,
 
           // Use AppLocalizations to configure the correct application title
           // depending on the user's locale.

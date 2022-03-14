@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodsora/generated/l10n.dart';
 
 import 'settings_controller.dart';
 
@@ -29,6 +30,15 @@ class SettingsView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            ListTile(
+              title: Text(Localizations.localeOf(context).toString()),
+            ),
+            ListTile(
+              title: Text(S.of(context).test_language),
+            ),
+            ListTile(
+              title: Text(controller.locale.languageCode),
+            ),
             DropdownButton<Locale>(
               // Read the selected themeMode from the controller
               value: controller.locale,
@@ -44,6 +54,9 @@ class SettingsView extends StatelessWidget {
                   child: Text('Vietnam'),
                 ),
               ],
+            ),
+            ListTile(
+              title: Text(controller.themeMode.name),
             ),
             DropdownButton<ThemeMode>(
               // Read the selected themeMode from the controller
