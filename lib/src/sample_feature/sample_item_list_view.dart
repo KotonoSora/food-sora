@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodsora/src/sample_feature/sample_sqlite.dart';
 
 import '../settings/settings_view.dart';
 import 'sample_item.dart';
@@ -31,6 +32,23 @@ class SampleItemListView extends StatelessWidget {
             },
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Text('Sample Sqlite'),
+              onTap: () {
+                Navigator.restorablePushNamed(context, SampleSqlite.routeName);
+              },
+            )
+          ],
+        ),
       ),
 
       // To work with lists that may contain a large number of items, it’s best

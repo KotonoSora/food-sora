@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:foodsora/generated/l10n.dart';
+import 'package:foodsora/src/sample_feature/sample_sqlite.dart';
 
 import 'sample_feature/sample_item_details_view.dart';
 import 'sample_feature/sample_item_list_view.dart';
@@ -70,6 +71,8 @@ class MyApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case SampleItemDetailsView.routeName:
                     return const SampleItemDetailsView();
+                  case SampleSqlite.routeName:
+                    return SampleSqlite();
                   case SampleItemListView.routeName:
                   default:
                     return const SampleItemListView();
