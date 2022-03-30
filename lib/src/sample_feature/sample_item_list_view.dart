@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodsora/src/sample_feature/sample_sqlite.dart';
+import 'package:foodsora/src/views/sample_todo.dart';
 
 import '../settings/settings_view.dart';
 import 'sample_item.dart';
@@ -46,7 +47,13 @@ class SampleItemListView extends StatelessWidget {
               onTap: () {
                 Navigator.restorablePushNamed(context, SampleSqlite.routeName);
               },
-            )
+            ),
+            ListTile(
+              title: const Text('Sample Todo'),
+              onTap: () {
+                Navigator.restorablePushNamed(context, SampleTodo.routeName);
+              },
+            ),
           ],
         ),
       ),

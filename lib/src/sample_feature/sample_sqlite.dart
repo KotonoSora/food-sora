@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodsora/src/models/dog.dart';
 import 'package:sqflite/sqflite.dart';
-
 import 'package:foodsora/src/db/database_helper.dart';
 
 class SampleSqlite extends StatefulWidget {
@@ -16,30 +15,26 @@ class SampleSqlite extends StatefulWidget {
 class _SampleSqliteState extends State<SampleSqlite> {
   final DatabaseHelper _db = DatabaseHelper.instance;
 
-  var fido = const Dog(
-    id: 0,
-    name: 'Fido',
-    age: 35,
-  );
+  Dog fido = const Dog(0, 'Fido', 35);
 
   Future<void> insertDog(Dog dog) async {
     Database db = await _db.database;
     await db.insert(
       'dogs',
-      dog.toMap(),
+      dog.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 
-  Future<List<Dog>> dogs() async {
+  Future<List<Map<String, dynamic>>> dogs() async {
     Database db = await _db.database;
     final List<Map<String, dynamic>> maps = await db.query('dogs');
     return List.generate(maps.length, (i) {
       return Dog(
-        id: maps[i]['id'],
-        name: maps[i]['name'],
-        age: maps[i]['age'],
-      );
+        maps[i]['id'],
+        maps[i]['name'],
+        maps[i]['age'],
+      ).toJson();
     });
   }
 
@@ -47,7 +42,7 @@ class _SampleSqliteState extends State<SampleSqlite> {
     Database db = await _db.database;
     await db.update(
       'dogs',
-      dog.toMap(),
+      dog.toJson(),
       where: 'id = ?',
       whereArgs: [dog.id],
     );
@@ -69,9 +64,9 @@ class _SampleSqliteState extends State<SampleSqlite> {
 
   Future<void> todoUpdateDog() async {
     fido = Dog(
-      id: fido.id,
-      name: fido.name,
-      age: fido.age + 7,
+      fido.id,
+      fido.name,
+      fido.age + 7,
     );
     await updateDog(fido);
     print(await dogs());

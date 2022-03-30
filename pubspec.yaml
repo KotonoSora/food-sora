@@ -19,6 +19,7 @@ dependencies:
   json_annotation: ^4.4.0
   path: ^1.8.0
   path_provider: ^2.0.9
+  provider: ^6.0.2
   shared_preferences: ^2.0.13
   sqflite: ^2.0.2
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodsora/src/view_models/todo_list_view_model.dart';
+import 'package:provider/provider.dart';
 
 import 'src/app.dart';
 import 'src/settings/settings_controller.dart';
@@ -17,5 +19,14 @@ void main() async {
   // Run the app and pass in the SettingsController. The app listens to the
   // SettingsController for changes, then passes it further down to the
   // SettingsView.
-  runApp(MyApp(settingsController: settingsController));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (BuildContext context) => TodoListViewModel(),
+        ),
+      ],
+      child: MyApp(settingsController: settingsController),
+    ),
+  );
 }
